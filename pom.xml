@@ -29,7 +29,6 @@
     <system>Github</system>
     <url>https://github.com/microbean/${project.artifactId}/issues/</url>
   </issueManagement>
-
   <!--
 
      For more on the structure of this pom.xml file, which is chiefly
@@ -47,7 +46,11 @@
   
   <dependencyManagement>
     <dependencies>
-
+		<dependency>
+			<groupId>com.vdurmont</groupId>
+			<artifactId>semver4j</artifactId>
+			<version>3.1.0</version>
+		</dependency>
       <dependency>
         <groupId>com.github.zafarkhaja</groupId>
         <artifactId>java-semver</artifactId>
@@ -105,7 +108,11 @@
         <type>jar</type>
         <classifier>${os.detected.classifier}</classifier>
       </dependency>
-
+		<dependency>
+			<groupId>com.vdurmont</groupId>
+			<artifactId>semver4j</artifactId>
+			<version>3.1.0</version>
+		</dependency>
       <dependency>
         <groupId>org.kamranzafar</groupId>
         <artifactId>jtar</artifactId>
@@ -140,7 +147,11 @@
   <dependencies>
 
     <!-- Compile-scoped dependencies. -->
-
+		<dependency>
+			<groupId>com.vdurmont</groupId>
+			<artifactId>semver4j</artifactId>
+			<version>3.1.0</version>
+		</dependency>
     <dependency>
       <groupId>com.github.zafarkhaja</groupId>
       <artifactId>java-semver</artifactId>
@@ -396,6 +407,7 @@
 
   <properties>
 
+		<os.detected.classifier>linux-x86_64</os.detected.classifier>
     <!-- maven-javadoc-plugin properties; see https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
     <doctitle>&lt;a href="${project.url}" target="_parent"&gt;&lt;span style="font-family:Lobster, cursive;"&gt;µb&lt;/span&gt; ${project.artifactId}&lt;/a&gt; ${project.version} &lt;a href="https://travis-ci.org/microbean/${project.artifactId}" target="_parent"&gt;&lt;img src="https://travis-ci.org/microbean/${project.artifactId}.svg?branch=master"&gt;&lt;/a&gt;</doctitle>
     <links>https://www.grpc.io/grpc-java/javadoc/,https://developers.google.com/protocol-buffers/docs/reference/java/,https://google.github.io/guava/releases/19.0/api/docs/,https://microbean.github.io/microbean-kubernetes/apidocs/,https://microbean.github.io/microbean-development-annotations/apidocs/,http://static.javadoc.io/com.github.zafarkhaja/java-semver/0.9.0,https://static.javadoc.io/io.fabric8/kubernetes-client/4.3.0,https://static.javadoc.io/io.fabric8/kubernetes-model/4.3.0,https://static.javadoc.io/org.kamranzafar/jtar/2.3,https://static.javadoc.io/org.yaml/snakeyaml/1.24</links>

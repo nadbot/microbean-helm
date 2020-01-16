@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-
+import java.util.concurrent.Semaphore;
 import java.util.regex.Pattern;
 
 import com.github.zafarkhaja.semver.Parser;
@@ -35,6 +35,9 @@ import com.github.zafarkhaja.semver.Version;
 
 import com.github.zafarkhaja.semver.expr.Expression;
 import com.github.zafarkhaja.semver.expr.ExpressionParser;
+
+import com.vdurmont.semver4j.Semver;
+
 
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
@@ -1026,10 +1029,12 @@ public final class Requirements {
       if (myVersionRange == null) {
         return false;
       }
-      
+	  Semver semver = new Semver(versionString);
       final Version version = Version.valueOf(versionString);
       assert version != null;
-      return version.satisfies(ExpressionParser.newInstance().parse(myVersionRange));
+//      return version.satisfies(ExpressionParser.newInstance().parse(myVersionRange));
+      return semver.satisfies(myVersionRange);
+      
     }
 
     final boolean adjustName(final Chart.Builder subchart) {
