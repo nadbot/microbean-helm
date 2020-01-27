@@ -19,7 +19,6 @@ package org.microbean.helm.chart;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.beans.SimpleBeanInfo;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,20 +26,14 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.Semaphore;
 import java.util.regex.Pattern;
 
-import com.github.zafarkhaja.semver.Parser;
+import org.yaml.snakeyaml.Yaml;
+
 import com.github.zafarkhaja.semver.Version;
-
-import com.github.zafarkhaja.semver.expr.Expression;
-import com.github.zafarkhaja.semver.expr.ExpressionParser;
-
-import com.vdurmont.semver4j.Semver;
-
-
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
+import com.vdurmont.semver4j.Semver;
 
 import hapi.chart.ChartOuterClass.Chart;
 import hapi.chart.ChartOuterClass.ChartOrBuilder;
@@ -48,8 +41,6 @@ import hapi.chart.ConfigOuterClass.Config;
 import hapi.chart.ConfigOuterClass.ConfigOrBuilder;
 import hapi.chart.MetadataOuterClass.Metadata;
 import hapi.chart.MetadataOuterClass.MetadataOrBuilder;
-
-import org.yaml.snakeyaml.Yaml;
 
 /**
  * A specification of a <a
@@ -1015,7 +1006,6 @@ public final class Requirements {
       if (versionString == null) {
         return false;
       }
-      
       final Object myName = this.getName();
       if (myName == null) {
         if (name != null) {
