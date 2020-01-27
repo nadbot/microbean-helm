@@ -1029,12 +1029,18 @@ public final class Requirements {
       if (myVersionRange == null) {
         return false;
       }
-	  Semver semver = new Semver(versionString);
       final Version version = Version.valueOf(versionString);
       assert version != null;
-//      return version.satisfies(ExpressionParser.newInstance().parse(myVersionRange));
+      ///////////////////////////////////////////////////////////
+      ///////////////////// Changed code!!! /////////////////////
+      // Changed semver from zafarkhaja to com.vdurmont.semver4j
+      // because zafarkhaja's semver could not handle dependencies with version containing a number behind the hyphen ( i.e. 1.0.0-10)
+      // Original code:
+      // return version.satisfies(ExpressionParser.newInstance().parse(myVersionRange));
+      // New code:
+      Semver semver = new Semver(versionString);
       return semver.satisfies(myVersionRange);
-      
+      ///////////////////////////////////////////////////////////
     }
 
     final boolean adjustName(final Chart.Builder subchart) {
